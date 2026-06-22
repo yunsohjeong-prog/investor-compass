@@ -143,10 +143,24 @@
 
     /* ABOUT */
     .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 3rem; align-items: start;
+      display: grid; grid-template-columns: 220px 1fr 1fr;
+      gap: 2.5rem; align-items: start;
     }
-    @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-photo { text-align: center; }
+    .about-photo img {
+      width: 200px; height: 200px;
+      object-fit: cover; object-position: top;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      display: block; margin: 0 auto 1rem;
+    }
+    .about-photo .photo-name {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1rem; font-weight: 700; color: var(--text);
+    }
+    .about-photo .photo-title { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
     .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; }
     .about-text strong { color: var(--text); }
     .career-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; }
@@ -448,6 +462,11 @@
     <p>IT 서비스 기획자에서 벤처투자가로, 두 번의 커리어 전환을 지나온 이야기</p>
   </div>
   <div class="about-grid">
+    <div class="about-photo">
+      <img src="profile.jpg" alt="윤소정 프로필 사진" />
+      <div class="photo-name">윤소정</div>
+      <div class="photo-title">KB인베스트먼트 벤처투자그룹 이사</div>
+    </div>
     <div class="about-text">
       <p>
         저는 IT 업계에서 서비스 기획·개발을 이끌며 <strong>네이버</strong>와 <strong>스마일게이트</strong>에서 플랫폼과 게임을 만들었습니다. 그리고 마흔, 완전히 새로운 세계인 <strong>벤처투자(VC)</strong>로 커리어를 전환하여 기술·콘텐츠·AI·커머스 등 다양한 산업의 변화를 읽고 투자하고 있습니다.
