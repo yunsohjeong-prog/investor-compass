@@ -202,6 +202,48 @@
     }
     .book-tag.active { border-color: rgba(127,119,221,0.5); color: var(--accent3); background: rgba(127,119,221,0.08); }
 
+    /* SIYA BOARD */
+    .siya-board { width: 100%; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .siya-header-row {
+      display: grid; grid-template-columns: 48px 1fr 90px 80px;
+      padding: 0.7rem 1.25rem;
+      background: var(--bg3);
+      font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 500;
+    }
+    .siya-row {
+      display: grid; grid-template-columns: 48px 1fr 90px 80px;
+      padding: 1.1rem 1.25rem;
+      border-top: 1px solid var(--border);
+      text-decoration: none; color: inherit;
+      transition: background 0.15s;
+      align-items: center;
+    }
+    .siya-row:hover { background: var(--bg2); }
+    .siya-row.new .siya-col-title { color: var(--text); font-weight: 500; }
+    .siya-col-num { font-size: 0.85rem; color: var(--text-muted); }
+    .siya-col-title { font-size: 0.92rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+    .siya-col-tag { }
+    .siya-col-date { font-size: 0.8rem; color: var(--text-muted); }
+    .new-badge {
+      font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.45rem;
+      border-radius: 4px; background: rgba(232,160,60,0.15);
+      color: var(--accent); border: 1px solid rgba(232,160,60,0.35);
+      letter-spacing: 0.05em;
+    }
+    .siya-tag {
+      font-size: 0.72rem; padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(232,160,60,0.08); color: var(--accent);
+      border: 1px solid rgba(232,160,60,0.25);
+    }
+    .siya-tag.green { background: rgba(29,158,117,0.08); color: var(--accent2); border-color: rgba(29,158,117,0.3); }
+    .siya-tag.purple { background: rgba(127,119,221,0.08); color: var(--accent3); border-color: rgba(127,119,221,0.3); }
+    @media (max-width: 560px) {
+      .siya-header-row, .siya-row { grid-template-columns: 36px 1fr 70px; }
+      .siya-col-date { display: none; }
+    }
+
     /* INSIGHTS / LECTURES */
     .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
     .card {
@@ -298,11 +340,11 @@
 <nav>
   <div class="nav-logo">🧭 <span>투자자의</span> 나침반</div>
   <div class="nav-links">
+    <a href="#siya">시야</a>
     <a href="#about">소개</a>
     <a href="#portfolio">포트폴리오</a>
     <a href="#trevari">트레바리</a>
     <a href="#lectures">강의록</a>
-    <a href="#siya">시야</a>
     <a href="#contact">연락처</a>
   </div>
 </nav>
@@ -325,6 +367,46 @@
     <a href="#trevari" class="btn btn-outline">📚 트레바리 클럽</a>
   </div>
 </header>
+
+<!-- SIYA -->
+<section id="siya">
+  <div class="section-header">
+    <span class="section-label">視野 · Siya</span>
+    <h2>시야</h2>
+    <p>투자 너머의 이야기 — 인문, 사회, 그리고 책에서 발견한 것들</p>
+  </div>
+  <div class="siya-board">
+    <div class="siya-header-row">
+      <span class="siya-col-num">No.</span>
+      <span class="siya-col-title">제목</span>
+      <span class="siya-col-tag">분류</span>
+      <span class="siya-col-date">날짜</span>
+    </div>
+    <a class="siya-row new" href="#">
+      <span class="siya-col-num">3</span>
+      <span class="siya-col-title">
+        투자자의 나침반 시즌 2를 열고
+        <span class="new-badge">NEW</span>
+      </span>
+      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
+      <span class="siya-col-date">2026.06</span>
+    </a>
+    <a class="siya-row" href="#">
+      <span class="siya-col-num">2</span>
+      <span class="siya-col-title">새로운 전환 (Transition), 한화 퐁피두를 다녀와서</span>
+      <span class="siya-col-tag"><span class="siya-tag purple">문화</span></span>
+      <span class="siya-col-date">2026.05</span>
+    </a>
+    <a class="siya-row" href="#">
+      <span class="siya-col-num">1</span>
+      <span class="siya-col-title">돈의 세계, '도덕 감정론'을 읽고</span>
+      <span class="siya-col-tag"><span class="siya-tag green">독후감</span></span>
+      <span class="siya-col-date">2026.04</span>
+    </a>
+  </div>
+</section>
+
+<hr class="divider" />
 
 <!-- ABOUT -->
 <section id="about">
@@ -508,37 +590,6 @@
       </div>
       <span class="lecture-badge lec-soon">예정</span>
     </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- SIYA -->
-<section id="siya">
-  <div class="section-header">
-    <span class="section-label">視野 · Siya</span>
-    <h2>시야</h2>
-    <p>투자 너머의 이야기 — 인문, 사회, 그리고 책에서 발견한 것들</p>
-  </div>
-  <div class="card-grid">
-    <a class="card" href="#">
-      <span class="card-icon">🌍</span>
-      <h3>사회를 읽는 눈</h3>
-      <p>숫자와 데이터 너머, 사람과 사회의 흐름을 투자자의 시선으로 바라봅니다.</p>
-      <span class="card-tag purple">사회</span>
-    </a>
-    <a class="card" href="#">
-      <span class="card-icon">📖</span>
-      <h3>독후감</h3>
-      <p>읽은 책에서 건진 생각들. 투자·경영·인문·소설을 가리지 않고 기록합니다.</p>
-      <span class="card-tag green">독서</span>
-    </a>
-    <a class="card" href="#">
-      <span class="card-icon">💭</span>
-      <h3>인문학적 단상</h3>
-      <p>역사, 철학, 심리학이 현재를 어떻게 설명하는지. 오래된 지혜와 오늘의 시장.</p>
-      <span class="card-tag">인문</span>
-    </a>
   </div>
 </section>
 
