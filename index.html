@@ -202,6 +202,23 @@
     }
     .book-tag.active { border-color: rgba(127,119,221,0.5); color: var(--accent3); background: rgba(127,119,221,0.08); }
 
+    /* SESSION LIST */
+    .session-list { display: flex; flex-direction: column; gap: 0; margin-top: 1.25rem; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .session-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem; color: var(--text-muted);
+      text-decoration: none;
+    }
+    .session-item:last-child { border-bottom: none; }
+    .session-num { font-size: 0.75rem; font-weight: 500; color: var(--accent); min-width: 42px; letter-spacing: 0.04em; }
+    .session-title { flex: 1; color: var(--text); }
+    .session-link:hover { background: var(--bg3); }
+    .session-link:hover .session-title { color: var(--accent); }
+    .session-arrow { font-size: 0.8rem; color: var(--text-muted); }
+    .session-soon { font-size: 0.72rem; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--bg3); color: var(--text-muted); border: 1px solid var(--border); white-space: nowrap; }
+
     /* SIYA BOARD */
     .siya-board { width: 100%; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
     .siya-header-row {
@@ -521,29 +538,54 @@
 
   <div class="trevari-box">
     <span class="season-badge">✓ 시즌 1 완료</span>
-    <h3>시즌 1 — 어떤 회사가 투자받고 성공하는가</h3>
+    <h3>시즌 1 — 투자자는 어떻게 미래를 예측할까?</h3>
     <p>
-      투자자의 눈으로 바라본 스타트업의 조건. 어떤 팀, 어떤 시장, 어떤 기술이 투자를 받고 성공하는지에 대한 인사이트를 정리했습니다.
+      어떤 시장이 열릴지, 어떤 팀이 성공할지, 어떤 기술이 미래가 될지 — 투자자는 끊임없이 세상을 분석하고 결정을 내려야 합니다. 이 클럽에서는 '벤처캐피탈리스트가 세상을 바라보는 방식'을 탐구했습니다. 미래를 읽고, 리스크를 해석하고, 본질을 판단하는 사고 구조. 클럽장 소정 님이 심사역으로서 경험한 실전 사례, 실패, 배움, 오랜 시간 쌓아 온 투자 프레임을 나누며 '좋은 판단'에 관해 함께 고민했습니다.
     </p>
+    <div class="book-list" style="margin-top: 1.25rem;">
+      <span class="book-tag active">돈의 심리학</span>
+      <span class="book-tag active">벤처 마인드셋</span>
+      <span class="book-tag active">실패를 통과하는 일</span>
+      <span class="book-tag active">슈퍼파운더</span>
+    </div>
+    <div class="session-list">
+      <div class="session-item"><span class="session-num">1회</span><span class="session-title">(투자) 판단의 기초, 심리를 이해합니다</span></div>
+      <div class="session-item"><span class="session-num">2회</span><span class="session-title">누가 투자 받는가?</span></div>
+      <div class="session-item"><span class="session-num">3회</span><span class="session-title">누가 성장하는가?</span></div>
+      <div class="session-item"><span class="session-num">4회</span><span class="session-title">누가 성공하는가?</span></div>
+    </div>
   </div>
 
   <div class="trevari-box" style="border-color: rgba(232,160,60,0.35);">
     <span class="season-badge" style="background: rgba(29,158,117,0.12); color: var(--accent2); border-color: rgba(29,158,117,0.3);">● 시즌 2 진행중</span>
     <h3>시즌 2 — 핵심 투자 섹터와 시장의 흐름</h3>
     <p>
-      최근 투자업계가 주목하는 핵심 투자 섹터와 관심 분야, 그리고 시장의 흐름을 바꾸는 주요 이슈를 함께 읽고 토론하는 모임입니다. 매달 한 권의 책을 중심으로 산업과 기술의 변화를 입체적으로 살펴보고, 해당 분야의 전문가를 초대 손님으로 모셔 현장의 시선과 깊이 있는 인사이트를 나눕니다.
+      최근 투자업계가 주목하는 핵심 투자 섹터와 관심 분야, 시장의 흐름을 바꾸는 주요 이슈를 함께 읽고 토론하는 모임입니다. 매달 한 권의 책을 중심으로 산업과 기술의 변화를 입체적으로 살펴보고, 해당 분야의 전문가를 초대 손님으로 모셔 현장의 시선과 깊이 있는 인사이트를 나눕니다.
     </p>
     <p style="margin-top: 0.75rem;">
       단기적인 유행을 따라가기보다, <strong style="color: var(--text);">시장의 방향을 만드는 구조적 변화를 투자자의 관점</strong>에서 함께 해석해보고자 합니다.
     </p>
-    <div class="book-list">
-      <span class="book-tag active">피지컬 AI</span>
-      <span class="book-tag active">반도체 밸류체인 투자</span>
-      <span class="book-tag active">AI 강의 2026</span>
-      <span class="book-tag">슈퍼파운더</span>
-      <span class="book-tag">돈의 심리학</span>
-      <span class="book-tag">벤처 마인드셋</span>
-      <span class="book-tag">혁신은 왜 실패하는가</span>
+    <div class="session-list">
+      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
+        <span class="session-num">1회차</span>
+        <span class="session-title">『피지컬 AI 2026 : 생각하는 AI에서 움직이는 AI로』</span>
+        <span class="session-arrow">↗</span>
+      </a>
+      <a class="session-item session-link" href="https://m.trevari.co.kr/product/84b35bd0-9e69-4f0a-9061-0d57493863d6?ttag=1779279131983da3dd91c358b49cb8359357f2bea2696&uid=cf610e9a-7af6-4f67-a85e-8fb931262c59" target="_blank">
+        <span class="session-num">2회차</span>
+        <span class="session-title">손정우, 『반도체 밸류체인 투자』: 핵심 스타트업부터 산업 전반의 흐름까지</span>
+        <span class="session-arrow">↗</span>
+      </a>
+      <div class="session-item">
+        <span class="session-num">3회차</span>
+        <span class="session-title">박태웅, 『박태웅의 AI 강의 2025』: AI 투자 트렌드와 국가 미래 전략</span>
+        <span class="session-soon">예정</span>
+      </div>
+      <div class="session-item">
+        <span class="session-num">4회차</span>
+        <span class="session-title">박종성, 『혁신은 왜 실패하는가』: 현재에 필요한, 과거가 던지는 교훈</span>
+        <span class="session-soon">예정</span>
+      </div>
     </div>
   </div>
 </section>
