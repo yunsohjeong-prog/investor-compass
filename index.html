@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>투자자의 나침반 · 윤소정</title>
+  <title>윤소정의 투자자의 나침반</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet" />
@@ -50,6 +50,13 @@
       color: var(--accent); letter-spacing: 0.02em;
     }
     .nav-logo span { color: var(--text); }
+    .nav-logo .nav-name {
+      font-style: normal;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+    }
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a {
       color: var(--text-muted); text-decoration: none;
@@ -78,6 +85,14 @@
       font-weight: 700; margin-bottom: 0.5rem; color: var(--text);
     }
     .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-name {
+      display: block;
+      font-size: 0.55em;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
     .hero .tagline {
       font-size: 1.05rem; color: var(--text-muted);
       margin-bottom: 0.5rem; max-width: 560px;
@@ -355,7 +370,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">🧭 <span>투자자의</span> 나침반</div>
+  <div class="nav-logo">🧭 <em class="nav-name">윤소정</em>의 <span>투자자의 나침반</span></div>
   <div class="nav-links">
     <a href="#siya">시야</a>
     <a href="#about">소개</a>
