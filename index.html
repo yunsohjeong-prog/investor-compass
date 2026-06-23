@@ -265,6 +265,7 @@
       transition: background 0.15s;
       align-items: center;
     }
+    .siya-row { cursor: pointer; }
     .siya-row:hover { background: var(--bg2); }
     .siya-row.new .siya-col-title { color: var(--text); font-weight: 500; }
     .siya-col-num { font-size: 0.85rem; color: var(--text-muted); }
@@ -285,6 +286,56 @@
     }
     .siya-tag.green { background: rgba(29,158,117,0.08); color: var(--accent2); border-color: rgba(29,158,117,0.3); }
     .siya-tag.purple { background: rgba(127,119,221,0.08); color: var(--accent3); border-color: rgba(127,119,221,0.3); }
+
+    /* SIYA DETAIL PAGE */
+    .siya-detail {
+      display: none;
+      max-width: 760px; margin: 0 auto;
+    }
+    .siya-detail.active { display: block; }
+    .siya-back-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem; color: var(--text-muted);
+      background: none; border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.4rem 0.9rem;
+      cursor: pointer; transition: color 0.2s, border-color 0.2s;
+      margin-bottom: 2rem; text-decoration: none;
+    }
+    .siya-back-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .siya-detail-meta {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+    .siya-detail-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700; color: var(--text);
+      line-height: 1.5; margin-bottom: 1.8rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .siya-detail-body {
+      font-size: 0.95rem; color: var(--text-muted);
+      line-height: 2.1; white-space: pre-wrap;
+    }
+    .siya-detail-body strong, .siya-detail-body b { color: var(--text); }
+    .siya-nav-row {
+      display: flex; justify-content: space-between;
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .siya-nav-btn {
+      display: flex; flex-direction: column; gap: 0.25rem;
+      background: none; border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.75rem 1.1rem;
+      cursor: pointer; transition: border-color 0.2s;
+      text-align: left; max-width: 46%; text-decoration: none;
+    }
+    .siya-nav-btn:hover { border-color: var(--accent); }
+    .siya-nav-btn.right { text-align: right; margin-left: auto; }
+    .siya-nav-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em; }
+    .siya-nav-title { font-size: 0.85rem; color: var(--text); }
     @media (max-width: 560px) {
       .siya-header-row, .siya-row { grid-template-columns: 36px 1fr 70px; }
       .siya-col-date { display: none; }
@@ -414,21 +465,6 @@
   </div>
 </header>
 
-<!-- SIYA MODAL -->
-<div id="siya-modal" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,0.75); overflow-y:auto; padding:2rem 1rem;">
-  <div style="max-width:720px; margin:0 auto; background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:2.5rem;">
-    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
-      <div>
-        <span id="modal-tag" style="font-size:0.75rem; padding:0.2rem 0.7rem; border-radius:999px; background:rgba(232,160,60,0.1); color:var(--accent); border:1px solid rgba(232,160,60,0.3);"></span>
-        <span id="modal-date" style="font-size:0.8rem; color:var(--text-muted); margin-left:0.75rem;"></span>
-      </div>
-      <button onclick="document.getElementById('siya-modal').style.display='none'" style="background:none; border:none; color:var(--text-muted); font-size:1.4rem; cursor:pointer; line-height:1;">✕</button>
-    </div>
-    <h2 id="modal-title" style="font-family:'Noto Serif KR',serif; font-size:1.4rem; font-weight:700; margin-bottom:1.5rem; color:var(--text); line-height:1.5;"></h2>
-    <div id="modal-body" style="font-size:0.92rem; color:var(--text-muted); line-height:2; white-space:pre-wrap;"></div>
-  </div>
-</div>
-
 <!-- SIYA -->
 <section id="siya">
   <div class="section-header">
@@ -436,86 +472,100 @@
     <h2>시야</h2>
     <p>투자 너머의 이야기 — 인문, 사회, 그리고 책에서 발견한 것들</p>
   </div>
-  <div class="siya-board">
+
+  <!-- 상세 페이지 (기본 숨김) -->
+  <div class="siya-detail" id="siya-detail">
+    <button class="siya-back-btn" onclick="closeSiyaDetail()">← 목록으로</button>
+    <div class="siya-detail-meta">
+      <span class="siya-tag" id="detail-tag"></span>
+      <span style="font-size:0.82rem; color:var(--text-muted);" id="detail-date"></span>
+    </div>
+    <h2 class="siya-detail-title" id="detail-title"></h2>
+    <div class="siya-detail-body" id="detail-body"></div>
+    <div class="siya-nav-row" id="detail-nav"></div>
+  </div>
+
+  <!-- 게시판 목록 -->
+  <div class="siya-board" id="siya-board">
     <div class="siya-header-row">
       <span class="siya-col-num">No.</span>
       <span class="siya-col-title">제목</span>
       <span class="siya-col-tag">분류</span>
       <span class="siya-col-date">날짜</span>
     </div>
-    <div class="siya-row new" onclick="openModal(1)">
+    <div class="siya-row new" onclick="openSiya(1)">
       <span class="siya-col-num">13</span>
       <span class="siya-col-title">돈의 세계, 『도덕감정론』을 다시 펼치다 <span class="new-badge">NEW</span></span>
       <span class="siya-col-tag"><span class="siya-tag green">독후감</span></span>
       <span class="siya-col-date">2026.06.20</span>
     </div>
-    <div class="siya-row" onclick="openModal(2)">
+    <div class="siya-row" onclick="openSiya(2)">
       <span class="siya-col-num">12</span>
       <span class="siya-col-title">모두의 창업</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2026.06.15</span>
     </div>
-    <div class="siya-row" onclick="openModal(3)">
+    <div class="siya-row" onclick="openSiya(3)">
       <span class="siya-col-num">11</span>
       <span class="siya-col-title">새로운 전환(Transition) — 한화 퐁피두를 다녀와서</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2026.06.14</span>
     </div>
-    <div class="siya-row" onclick="openModal(4)">
+    <div class="siya-row" onclick="openSiya(4)">
       <span class="siya-col-num">10</span>
       <span class="siya-col-title">투자자의 나침반 시즌 2를 열고</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2026.06.13</span>
     </div>
-    <div class="siya-row" onclick="openModal(5)">
+    <div class="siya-row" onclick="openSiya(5)">
       <span class="siya-col-num">9</span>
       <span class="siya-col-title">스타트업 생태계 컨퍼런스 2026</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2026.05.28</span>
     </div>
-    <div class="siya-row" onclick="openModal(6)">
+    <div class="siya-row" onclick="openSiya(6)">
       <span class="siya-col-num">8</span>
       <span class="siya-col-title">투자는 결국 생존력이었다</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2026.04.24</span>
     </div>
-    <div class="siya-row" onclick="openModal(7)">
+    <div class="siya-row" onclick="openSiya(7)">
       <span class="siya-col-num">7</span>
       <span class="siya-col-title">국회에 다녀왔다</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2026.04.15</span>
     </div>
-    <div class="siya-row" onclick="openModal(8)">
+    <div class="siya-row" onclick="openSiya(8)">
       <span class="siya-col-num">6</span>
       <span class="siya-col-title">트레바리 시즌1을 마치고</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2026.04.10</span>
     </div>
-    <div class="siya-row" onclick="openModal(9)">
+    <div class="siya-row" onclick="openSiya(9)">
       <span class="siya-col-num">5</span>
       <span class="siya-col-title">의료기기 투자, 마지막 한 바퀴의 경이로움</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2026.01.16</span>
     </div>
-    <div class="siya-row" onclick="openModal(10)">
+    <div class="siya-row" onclick="openSiya(10)">
       <span class="siya-col-num">4</span>
       <span class="siya-col-title">〈블랙베리〉의 시대, AI 패러다임 전환기의 시사점</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2025.12.18</span>
     </div>
-    <div class="siya-row" onclick="openModal(11)">
+    <div class="siya-row" onclick="openSiya(11)">
       <span class="siya-col-num">3</span>
       <span class="siya-col-title">트레바리 시즌1 오픈</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2025.12.14</span>
     </div>
-    <div class="siya-row" onclick="openModal(12)">
+    <div class="siya-row" onclick="openSiya(12)">
       <span class="siya-col-num">2</span>
       <span class="siya-col-title">미래 유니콘 기업을 위한 투자 유치 전략 강연</span>
       <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
       <span class="siya-col-date">2025.12.10</span>
     </div>
-    <div class="siya-row" onclick="openModal(13)">
+    <div class="siya-row" onclick="openSiya(13)">
       <span class="siya-col-num">1</span>
       <span class="siya-col-title">[삶의 철학] 나의 오십(五十)을 감사한다</span>
       <span class="siya-col-tag"><span class="siya-tag purple">에세이</span></span>
@@ -885,22 +935,42 @@ VC는 무엇을 보고 결정을 내리는가. 투자 유치 가능성을 높이
   }
 };
 
-function openModal(id) {
+const tagClass = { '독후감': 'green', '에세이': '', '삶의철학': 'purple' };
+
+function openSiya(id) {
   const d = siyaData[id];
-  document.getElementById('modal-title').textContent = d.title;
-  document.getElementById('modal-tag').textContent = d.tag;
-  document.getElementById('modal-date').textContent = d.date;
-  document.getElementById('modal-body').textContent = d.body;
-  document.getElementById('siya-modal').style.display = 'block';
-  document.body.style.overflow = 'hidden';
+  const tagEl = document.getElementById('detail-tag');
+  tagEl.textContent = d.tag;
+  tagEl.className = 'siya-tag' + (tagClass[d.tag] ? ' ' + tagClass[d.tag] : '');
+  document.getElementById('detail-date').textContent = d.date;
+  document.getElementById('detail-title').textContent = d.title;
+  document.getElementById('detail-body').textContent = d.body;
+
+  // 이전/다음 글 네비게이션 (번호 기준: 최신=13, 오래된=1)
+  const ids = Object.keys(siyaData).map(Number).sort((a,b) => b-a); // 최신순
+  const idx = ids.indexOf(id);
+  let navHTML = '';
+  if (idx < ids.length - 1) {
+    const prevId = ids[idx + 1];
+    navHTML += `<button class="siya-nav-btn" onclick="openSiya(${prevId})"><span class="siya-nav-label">← 이전 글</span><span class="siya-nav-title">${siyaData[prevId].title}</span></button>`;
+  } else {
+    navHTML += '<span></span>';
+  }
+  if (idx > 0) {
+    const nextId = ids[idx - 1];
+    navHTML += `<button class="siya-nav-btn right" onclick="openSiya(${nextId})"><span class="siya-nav-label">다음 글 →</span><span class="siya-nav-title">${siyaData[nextId].title}</span></button>`;
+  }
+  document.getElementById('detail-nav').innerHTML = navHTML;
+
+  document.getElementById('siya-board').style.display = 'none';
+  document.getElementById('siya-detail').classList.add('active');
+  document.getElementById('siya').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-document.getElementById('siya-modal').addEventListener('click', function(e) {
-  if (e.target === this) {
-    this.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-});
+function closeSiyaDetail() {
+  document.getElementById('siya-detail').classList.remove('active');
+  document.getElementById('siya-board').style.display = '';
+}
 </script>
 
 <hr class="divider" />
