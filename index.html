@@ -286,6 +286,21 @@
     }
     .siya-tag.green { background: rgba(29,158,117,0.08); color: var(--accent2); border-color: rgba(29,158,117,0.3); }
     .siya-tag.purple { background: rgba(127,119,221,0.08); color: var(--accent3); border-color: rgba(127,119,221,0.3); }
+    /* SIYA PAGINATION */
+    .siya-page-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1rem; padding: 0.6rem 0;
+    }
+    .siya-page-btns { display: flex; gap: 0.4rem; }
+    .siya-page-btn {
+      min-width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--border); background: none;
+      color: var(--text-muted); font-size: 0.85rem; cursor: pointer;
+      transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+    }
+    .siya-page-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .siya-page-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
+    .siya-pinned { background: rgba(127,119,221,0.05); border-left: 2px solid var(--accent3); }
 
     /* SIYA DETAIL PAGE */
     .siya-detail {
@@ -437,11 +452,11 @@
 <nav>
   <div class="nav-logo">🧭 <em class="nav-name">윤소정</em>의 투자자의 <span>나침반</span></div>
   <div class="nav-links">
-    <a href="#siya">시야</a>
     <a href="#about">소개</a>
     <a href="#portfolio">포트폴리오</a>
     <a href="#trevari">트레바리</a>
     <a href="#lectures">강의록</a>
+    <a href="#siya">시야</a>
     <a href="#contact">연락처</a>
   </div>
 </nav>
@@ -465,6 +480,243 @@
   </div>
 </header>
 
+
+<hr class="divider" />
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-label">About</span>
+    <h2>윤소정을 소개합니다</h2>
+    <p>IT 서비스 기획자에서 벤처투자가로, 두 번의 커리어 전환을 지나온 이야기</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-photo">
+      <img src="profile.jpg" alt="윤소정 프로필 사진" />
+      <div class="photo-name">윤소정</div>
+      <div class="photo-title">KB인베스트먼트 벤처투자그룹 이사</div>
+    </div>
+    <div class="about-text">
+      <p>
+        저는 IT 업계에서 서비스 기획·개발을 이끌며 <strong>네이버</strong>와 <strong>스마일게이트</strong>에서 플랫폼과 게임을 만들었습니다. 그리고 마흔, 완전히 새로운 세계인 <strong>벤처투자(VC)</strong>로 커리어를 전환하여 기술·콘텐츠·AI·커머스 등 다양한 산업의 변화를 읽고 투자하고 있습니다.
+      </p>
+      <p>
+        두 번의 커리어 전환을 지나며 깨달은 가장 중요한 사실은, 일이 달라져도 <strong>'판단력'과 '문제 해결 능력'</strong>은 미래를 설계하는 데 변하지 않는 핵심 역량이라는 점이었습니다.
+      </p>
+      <p>
+        벤처투자는 화려해 보이지만, 실제로는 수많은 불확실성 속에서 최적의 결정을 내려야 하는 일입니다. <strong>99%의 실패 가능성을 안고 1%의 성공을 위한 결단</strong>이 필요하죠.
+      </p>
+      <p>
+        KB인베스트먼트에서 <strong>세컨더리 펀드, 문화 콘텐츠 펀드, 뉴 콘텐츠 펀드</strong>의 대표 펀드매니저로 활동하며, 초기(0→1)부터 후기(1→10) 그리고 세컨더리 Exit 구조까지 전 생애주기 투자를 경험했습니다.
+      </p>
+    </div>
+    <div>
+      <div class="career-list">
+        <div class="career-item">
+          <div class="role">벤처투자그룹 이사</div>
+          <div class="org">KB인베스트먼트 (현재)</div>
+        </div>
+        <div class="career-item">
+          <div class="role">벤처투자본부 이사</div>
+          <div class="org">전 신한벤처투자</div>
+        </div>
+        <div class="career-item">
+          <div class="role">벤처투자본부 이사</div>
+          <div class="org">전 아주IB투자</div>
+        </div>
+        <div class="career-item">
+          <div class="role">서비스 팀장</div>
+          <div class="org">전 네이버</div>
+        </div>
+        <div class="career-item">
+          <div class="role">개발사 제작 실장</div>
+          <div class="org">전 스마일게이트</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PORTFOLIO -->
+<div class="portfolio-section" id="portfolio">
+  <div class="portfolio-inner">
+    <div class="section-header">
+      <span class="section-label">Portfolio</span>
+      <h2>주요 투자 포트폴리오</h2>
+      <p>플랫폼·커머스부터 AI·딥테크까지, 시장의 변화를 이끄는 기업들에 투자했습니다</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-cat">
+        <h4>🛒 플랫폼 & 커머스</h4>
+        <div class="portfolio-tags">
+          <span class="ptag highlight">무신사</span>
+          <span class="ptag highlight">당근마켓</span>
+          <span class="ptag">에이블리</span>
+          <span class="ptag">리멤버</span>
+          <span class="ptag">그립</span>
+          <span class="ptag">트리플</span>
+        </div>
+      </div>
+      <div class="portfolio-cat">
+        <h4>🎮 게임 & 콘텐츠</h4>
+        <div class="portfolio-tags">
+          <span class="ptag highlight">크래프톤</span>
+          <span class="ptag highlight">펄어비스</span>
+          <span class="ptag">넷마블 에프앤씨</span>
+          <span class="ptag">넷마블 네오</span>
+        </div>
+      </div>
+      <div class="portfolio-cat">
+        <h4>🤖 AI & 딥테크</h4>
+        <div class="portfolio-tags">
+          <span class="ptag">프렌들리에이아이</span>
+          <span class="ptag">스카이랩스</span>
+          <span class="ptag">올거나이즈</span>
+          <span class="ptag">스패너</span>
+          <span class="ptag">로브로스</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <blockquote>
+    잘 된 투자뿐 아니라 <em>예기치 않은 시장의 반전, 흠집 난 가설,<br />팀의 균열과 기다림 속에서 배운 인내</em>까지,<br />
+    실패에서 얻은 학습과 경험이 저의 판단 구조를 만들어 왔습니다.
+  </blockquote>
+  <cite>— 윤소정</cite>
+</div>
+
+<!-- TREVARI -->
+<section id="trevari">
+  <div class="section-header">
+    <span class="section-label">Trevari Club</span>
+    <h2>트레바리 · 투자자의 나침반</h2>
+    <p>투자자의 시선으로 시장의 구조적 변화를 함께 읽는 독서모임</p>
+  </div>
+
+  <div class="trevari-box">
+    <span class="season-badge">✓ 시즌 1 완료</span>
+    <h3>시즌 1 — 투자자는 어떻게 미래를 예측할까?</h3>
+    <p>
+      어떤 시장이 열릴지, 어떤 팀이 성공할지, 어떤 기술이 미래가 될지 — 투자자는 끊임없이 세상을 분석하고 결정을 내려야 합니다. 이 클럽에서는 '벤처캐피탈리스트가 세상을 바라보는 방식'을 탐구했습니다. 미래를 읽고, 리스크를 해석하고, 본질을 판단하는 사고 구조. 클럽장 소정 님이 심사역으로서 경험한 실전 사례, 실패, 배움, 오랜 시간 쌓아 온 투자 프레임을 나누며 '좋은 판단'에 관해 함께 고민했습니다.
+    </p>
+    <div class="book-list" style="margin-top: 1.25rem;">
+      <span class="book-tag active">돈의 심리학</span>
+      <span class="book-tag active">벤처 마인드셋</span>
+      <span class="book-tag active">실패를 통과하는 일</span>
+      <span class="book-tag active">슈퍼파운더</span>
+    </div>
+    <div class="session-list">
+      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
+        <span class="session-num">1회차</span>
+        <span class="session-title">(투자) 판단의 기초, 심리를 이해합니다 — 📖 모건 하우절, 『돈의 심리학』</span>
+        <span class="session-arrow">↗</span>
+      </a>
+      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
+        <span class="session-num">2회차</span>
+        <span class="session-title">누가 투자 받는가? — 📖 일리야 스트레불라예프, 『벤처 마인드셋』</span>
+        <span class="session-arrow">↗</span>
+      </a>
+      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
+        <span class="session-num">3회차</span>
+        <span class="session-title">누가 성장하는가? — 📖 박소령, 『실패를 통과하는 일』</span>
+        <span class="session-arrow">↗</span>
+      </a>
+      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
+        <span class="session-num">4회차</span>
+        <span class="session-title">누가 성공하는가? — 📖 알리 타마세브, 『슈퍼 파운더』</span>
+        <span class="session-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="trevari-box" style="border-color: rgba(232,160,60,0.35);">
+    <span class="season-badge" style="background: rgba(29,158,117,0.12); color: var(--accent2); border-color: rgba(29,158,117,0.3);">● 시즌 2 진행중</span>
+    <h3>시즌 2 — 핵심 투자 섹터와 시장의 흐름</h3>
+    <p>
+      최근 투자업계가 주목하는 핵심 투자 섹터와 관심 분야, 시장의 흐름을 바꾸는 주요 이슈를 함께 읽고 토론하는 모임입니다. 매달 한 권의 책을 중심으로 산업과 기술의 변화를 입체적으로 살펴보고, 해당 분야의 전문가를 초대 손님으로 모셔 현장의 시선과 깊이 있는 인사이트를 나눕니다.
+    </p>
+    <p style="margin-top: 0.75rem;">
+      단기적인 유행을 따라가기보다, <strong style="color: var(--text);">시장의 방향을 만드는 구조적 변화를 투자자의 관점</strong>에서 함께 해석해보고자 합니다.
+    </p>
+    <div class="session-list">
+      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
+        <span class="session-num">1회차</span>
+        <span class="session-title">김덕진·이승환, 『피지컬 AI 2026 : 생각하는 AI에서 움직이는 AI로』</span>
+        <span class="session-arrow">↗</span>
+      </a>
+      <a class="session-item session-link" href="https://m.trevari.co.kr/product/84b35bd0-9e69-4f0a-9061-0d57493863d6?ttag=1779279131983da3dd91c358b49cb8359357f2bea2696&uid=cf610e9a-7af6-4f67-a85e-8fb931262c59" target="_blank">
+        <span class="session-num">2회차</span>
+        <span class="session-title">손정우, 『반도체 밸류체인 투자』: 핵심 스타트업부터 산업 전반의 흐름까지</span>
+        <span class="session-arrow">↗</span>
+      </a>
+      <div class="session-item">
+        <span class="session-num">3회차</span>
+        <span class="session-title">박태웅, 『박태웅의 AI 강의 2026』: AI 투자 트렌드와 국가 미래 전략</span>
+        <span class="session-soon">예정</span>
+      </div>
+      <div class="session-item">
+        <span class="session-num">4회차</span>
+        <span class="session-title">박종성, 『혁신은 왜 실패하는가』: 현재에 필요한, 과거가 던지는 교훈</span>
+        <span class="session-soon">예정</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- LECTURES -->
+<section id="lectures">
+  <div class="section-header">
+    <span class="section-label">Lectures</span>
+    <h2>강의록</h2>
+    <p>벤처투자 현장에서 축적한 지식을 정리한 강의 노트</p>
+  </div>
+  <div class="lecture-list">
+    <div class="lecture-item">
+      <span class="lecture-num">01</span>
+      <div class="lecture-info">
+        <h3>예비유니콘의 투자유치 전략</h3>
+        <p>스타트업이 투자를 받기 위해 무엇을 준비해야 하는지, 투자자의 시선에서 바라본 전략과 실전 체크리스트</p>
+      </div>
+      <span class="lecture-badge lec-done">✓ 완료</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-num">02</span>
+      <div class="lecture-info">
+        <h3>세컨더리 투자의 가치</h3>
+        <p>세컨더리 펀드의 구조와 Exit 전략. 1차 투자자와 달리 세컨더리 투자자가 바라보는 가치 평가의 관점</p>
+      </div>
+      <span class="lecture-badge lec-done">✓ 완료</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-num">03</span>
+      <div class="lecture-info">
+        <h3>시장의 신호를 읽는 법</h3>
+        <p>기술·팀·시장의 변화를 미리 포착하는 투자자의 프레임. 작은 단서에서 큰 흐름을 읽는 방법</p>
+      </div>
+      <span class="lecture-badge lec-soon">예정</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-num">04</span>
+      <div class="lecture-info">
+        <h3>커리어 전환의 기술 — VC로 가는 길</h3>
+        <p>IT 서비스 기획자에서 벤처투자자로. 마흔에 새로운 세계로 뛰어든 경험과 판단 기준</p>
+      </div>
+      <span class="lecture-badge lec-soon">예정</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+
 <!-- SIYA -->
 <section id="siya">
   <div class="section-header">
@@ -473,7 +725,7 @@
     <p>투자 너머의 이야기 — 인문, 사회, 그리고 책에서 발견한 것들</p>
   </div>
 
-  <!-- 상세 페이지 (기본 숨김) -->
+  <!-- 상세 페이지 -->
   <div class="siya-detail" id="siya-detail">
     <button class="siya-back-btn" onclick="closeSiyaDetail()">← 목록으로</button>
     <div class="siya-detail-meta">
@@ -486,93 +738,56 @@
   </div>
 
   <!-- 게시판 목록 -->
-  <div class="siya-board" id="siya-board">
-    <div class="siya-header-row">
-      <span class="siya-col-num">No.</span>
-      <span class="siya-col-title">제목</span>
-      <span class="siya-col-tag">분류</span>
-      <span class="siya-col-date">날짜</span>
+  <div id="siya-board">
+    <div class="siya-board">
+      <div class="siya-header-row">
+        <span class="siya-col-num">No.</span>
+        <span class="siya-col-title">제목</span>
+        <span class="siya-col-tag">분류</span>
+        <span class="siya-col-date">날짜</span>
+      </div>
+      <div id="siya-rows"></div>
     </div>
-    <div class="siya-row new" onclick="openSiya(1)">
-      <span class="siya-col-num">13</span>
-      <span class="siya-col-title">돈의 세계, 『도덕감정론』을 다시 펼치다 <span class="new-badge">NEW</span></span>
-      <span class="siya-col-tag"><span class="siya-tag green">독후감</span></span>
-      <span class="siya-col-date">2026.06.20</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(2)">
-      <span class="siya-col-num">12</span>
-      <span class="siya-col-title">모두의 창업</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2026.06.15</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(3)">
-      <span class="siya-col-num">11</span>
-      <span class="siya-col-title">새로운 전환(Transition) — 한화 퐁피두를 다녀와서</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2026.06.14</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(4)">
-      <span class="siya-col-num">10</span>
-      <span class="siya-col-title">투자자의 나침반 시즌 2를 열고</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2026.06.13</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(5)">
-      <span class="siya-col-num">9</span>
-      <span class="siya-col-title">스타트업 생태계 컨퍼런스 2026</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2026.05.28</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(6)">
-      <span class="siya-col-num">8</span>
-      <span class="siya-col-title">투자는 결국 생존력이었다</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2026.04.24</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(7)">
-      <span class="siya-col-num">7</span>
-      <span class="siya-col-title">국회에 다녀왔다</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2026.04.15</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(8)">
-      <span class="siya-col-num">6</span>
-      <span class="siya-col-title">트레바리 시즌1을 마치고</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2026.04.10</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(9)">
-      <span class="siya-col-num">5</span>
-      <span class="siya-col-title">의료기기 투자, 마지막 한 바퀴의 경이로움</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2026.01.16</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(10)">
-      <span class="siya-col-num">4</span>
-      <span class="siya-col-title">〈블랙베리〉의 시대, AI 패러다임 전환기의 시사점</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2025.12.18</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(11)">
-      <span class="siya-col-num">3</span>
-      <span class="siya-col-title">트레바리 시즌1 오픈</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2025.12.14</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(12)">
-      <span class="siya-col-num">2</span>
-      <span class="siya-col-title">미래 유니콘 기업을 위한 투자 유치 전략 강연</span>
-      <span class="siya-col-tag"><span class="siya-tag">에세이</span></span>
-      <span class="siya-col-date">2025.12.10</span>
-    </div>
-    <div class="siya-row" onclick="openSiya(13)">
-      <span class="siya-col-num">1</span>
-      <span class="siya-col-title">[삶의 철학] 나의 오십(五十)을 감사한다</span>
-      <span class="siya-col-tag"><span class="siya-tag purple">에세이</span></span>
-      <span class="siya-col-date">2025.03.12</span>
+    <div class="siya-page-nav">
+      <span style="font-size:0.8rem; color:var(--text-muted);" id="siya-page-info"></span>
+      <div class="siya-page-btns" id="siya-page-btns"></div>
     </div>
   </div>
 </section>
+
+<hr class="divider" />
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-label">Contact</span>
+    <h2>연락처</h2>
+    <p>투자 문의, 강의 요청, 트레바리 클럽 참여 문의를 기다립니다</p>
+  </div>
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:yun.sohjeong@gmail.com">
+      <span class="ico">📧</span>
+      <strong>이메일</strong>
+      <span>yun.sohjeong@gmail.com</span>
+    </a>
+    <a class="contact-card" href="https://m.trevari.co.kr/product/84b35bd0-9e69-4f0a-9061-0d57493863d6" target="_blank">
+      <span class="ico">📖</span>
+      <strong>트레바리 클럽</strong>
+      <span>투자자의 나침반 시즌 2</span>
+    </a>
+    <a class="contact-card" href="#">
+      <span class="ico">💬</span>
+      <strong>강의 요청</strong>
+      <span>이메일로 문의해주세요</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <a href="#">투자자의 나침반</a> · KB인베스트먼트 윤소정 이사</p>
+  <p style="margin-top: 0.5rem;">이 사이트의 내용은 투자 권유가 아닙니다. 투자는 본인의 책임입니다.</p>
+</footer>
 
 <script>
 const siyaData = {
@@ -935,30 +1150,82 @@ VC는 무엇을 보고 결정을 내리는가. 투자 유치 가능성을 높이
   }
 };
 
-const tagClass = { '독후감': 'green', '에세이': '', '삶의철학': 'purple' };
+const boardMeta = {
+  1:  { num:13, title:'돈의 세계, 『도덕감정론』을 다시 펼치다', tag:'독후감', tagCls:'green', date:'2026.06.20', isNew:true },
+  2:  { num:12, title:'모두의 창업', tag:'에세이', tagCls:'', date:'2026.06.15' },
+  3:  { num:11, title:'새로운 전환(Transition) — 한화 퐁피두를 다녀와서', tag:'에세이', tagCls:'', date:'2026.06.14' },
+  4:  { num:10, title:'투자자의 나침반 시즌 2를 열고', tag:'에세이', tagCls:'', date:'2026.06.13' },
+  5:  { num:9,  title:'스타트업 생태계 컨퍼런스 2026', tag:'에세이', tagCls:'', date:'2026.05.28' },
+  6:  { num:8,  title:'투자는 결국 생존력이었다', tag:'에세이', tagCls:'', date:'2026.04.24' },
+  7:  { num:7,  title:'국회에 다녀왔다', tag:'에세이', tagCls:'', date:'2026.04.15' },
+  8:  { num:6,  title:'트레바리 시즌1을 마치고', tag:'에세이', tagCls:'', date:'2026.04.10' },
+  9:  { num:5,  title:'의료기기 투자, 마지막 한 바퀴의 경이로움', tag:'에세이', tagCls:'', date:'2026.01.16' },
+  10: { num:4,  title:'〈블랙베리〉의 시대, AI 패러다임 전환기의 시사점', tag:'에세이', tagCls:'', date:'2025.12.18' },
+  11: { num:3,  title:'트레바리 시즌1 오픈', tag:'에세이', tagCls:'', date:'2025.12.14' },
+  12: { num:2,  title:'미래 유니콘 기업을 위한 투자 유치 전략 강연', tag:'에세이', tagCls:'', date:'2025.12.10' },
+  13: { num:1,  title:'[삶의 철학] 나의 오십(五十)을 감사한다', tag:'에세이', tagCls:'purple', date:'2025.03.12', isPinned:true }
+};
+
+// 1페이지: 최신 4개(id 1~4) + 고정 id 13, 이후 5개씩
+const PINNED_ID = 13;
+const normalOrder = [1,2,3,4,5,6,7,8,9,10,11,12];
+const pages = [];
+pages.push([...normalOrder.slice(0,4), PINNED_ID]);
+for (let i = 4; i < normalOrder.length; i += 5) {
+  pages.push(normalOrder.slice(i, i+5));
+}
+
+let currentPage = 0;
+
+function renderBoard(page) {
+  currentPage = page;
+  const rows = document.getElementById('siya-rows');
+  const btns = document.getElementById('siya-page-btns');
+  const info = document.getElementById('siya-page-info');
+  rows.innerHTML = '';
+  pages[page].forEach(id => {
+    const m = boardMeta[id];
+    const div = document.createElement('div');
+    div.className = 'siya-row' + (m.isPinned ? ' siya-pinned' : '') + (m.isNew ? ' new' : '');
+    div.onclick = () => openSiya(id);
+    div.innerHTML =
+      '<span class="siya-col-num">' + (m.isPinned ? '📌 ' : '') + m.num + '</span>' +
+      '<span class="siya-col-title">' + m.title + (m.isNew ? ' <span class=\"new-badge\">NEW</span>' : '') + '</span>' +
+      '<span class="siya-col-tag"><span class="siya-tag' + (m.tagCls ? ' '+m.tagCls : '') + '">' + m.tag + '</span></span>' +
+      '<span class="siya-col-date">' + m.date + '</span>';
+    rows.appendChild(div);
+  });
+  btns.innerHTML = '';
+  pages.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.className = 'siya-page-btn' + (i === page ? ' active' : '');
+    b.textContent = i + 1;
+    b.onclick = () => renderBoard(i);
+    btns.appendChild(b);
+  });
+  info.textContent = (page+1) + ' / ' + pages.length + ' 페이지';
+}
 
 function openSiya(id) {
   const d = siyaData[id];
+  const m = boardMeta[id];
   const tagEl = document.getElementById('detail-tag');
-  tagEl.textContent = d.tag;
-  tagEl.className = 'siya-tag' + (tagClass[d.tag] ? ' ' + tagClass[d.tag] : '');
-  document.getElementById('detail-date').textContent = d.date;
-  document.getElementById('detail-title').textContent = d.title;
+  tagEl.textContent = m.tag;
+  tagEl.className = 'siya-tag' + (m.tagCls ? ' ' + m.tagCls : '');
+  document.getElementById('detail-date').textContent = m.date;
+  document.getElementById('detail-title').textContent = m.title;
   document.getElementById('detail-body').textContent = d.body;
 
-  // 이전/다음 글 네비게이션 (번호 기준: 최신=13, 오래된=1)
-  const ids = Object.keys(siyaData).map(Number).sort((a,b) => b-a); // 최신순
-  const idx = ids.indexOf(id);
+  const allIds = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+  const idx = allIds.indexOf(id);
   let navHTML = '';
-  if (idx < ids.length - 1) {
-    const prevId = ids[idx + 1];
-    navHTML += `<button class="siya-nav-btn" onclick="openSiya(${prevId})"><span class="siya-nav-label">← 이전 글</span><span class="siya-nav-title">${siyaData[prevId].title}</span></button>`;
-  } else {
-    navHTML += '<span></span>';
-  }
+  if (idx < allIds.length - 1) {
+    const prevId = allIds[idx + 1];
+    navHTML += '<button class="siya-nav-btn" onclick="openSiya(' + prevId + ')"><span class="siya-nav-label">← 이전 글</span><span class="siya-nav-title">' + boardMeta[prevId].title + '</span></button>';
+  } else { navHTML += '<span></span>'; }
   if (idx > 0) {
-    const nextId = ids[idx - 1];
-    navHTML += `<button class="siya-nav-btn right" onclick="openSiya(${nextId})"><span class="siya-nav-label">다음 글 →</span><span class="siya-nav-title">${siyaData[nextId].title}</span></button>`;
+    const nextId = allIds[idx - 1];
+    navHTML += '<button class="siya-nav-btn right" onclick="openSiya(' + nextId + ')"><span class="siya-nav-label">다음 글 →</span><span class="siya-nav-title">' + boardMeta[nextId].title + '</span></button>';
   }
   document.getElementById('detail-nav').innerHTML = navHTML;
 
@@ -971,274 +1238,8 @@ function closeSiyaDetail() {
   document.getElementById('siya-detail').classList.remove('active');
   document.getElementById('siya-board').style.display = '';
 }
+
+document.addEventListener('DOMContentLoaded', () => renderBoard(0));
 </script>
-
-<hr class="divider" />
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-header">
-    <span class="section-label">About</span>
-    <h2>윤소정을 소개합니다</h2>
-    <p>IT 서비스 기획자에서 벤처투자가로, 두 번의 커리어 전환을 지나온 이야기</p>
-  </div>
-  <div class="about-grid">
-    <div class="about-photo">
-      <img src="profile.jpg" alt="윤소정 프로필 사진" />
-      <div class="photo-name">윤소정</div>
-      <div class="photo-title">KB인베스트먼트 벤처투자그룹 이사</div>
-    </div>
-    <div class="about-text">
-      <p>
-        저는 IT 업계에서 서비스 기획·개발을 이끌며 <strong>네이버</strong>와 <strong>스마일게이트</strong>에서 플랫폼과 게임을 만들었습니다. 그리고 마흔, 완전히 새로운 세계인 <strong>벤처투자(VC)</strong>로 커리어를 전환하여 기술·콘텐츠·AI·커머스 등 다양한 산업의 변화를 읽고 투자하고 있습니다.
-      </p>
-      <p>
-        두 번의 커리어 전환을 지나며 깨달은 가장 중요한 사실은, 일이 달라져도 <strong>'판단력'과 '문제 해결 능력'</strong>은 미래를 설계하는 데 변하지 않는 핵심 역량이라는 점이었습니다.
-      </p>
-      <p>
-        벤처투자는 화려해 보이지만, 실제로는 수많은 불확실성 속에서 최적의 결정을 내려야 하는 일입니다. <strong>99%의 실패 가능성을 안고 1%의 성공을 위한 결단</strong>이 필요하죠.
-      </p>
-      <p>
-        KB인베스트먼트에서 <strong>세컨더리 펀드, 문화 콘텐츠 펀드, 뉴 콘텐츠 펀드</strong>의 대표 펀드매니저로 활동하며, 초기(0→1)부터 후기(1→10) 그리고 세컨더리 Exit 구조까지 전 생애주기 투자를 경험했습니다.
-      </p>
-    </div>
-    <div>
-      <div class="career-list">
-        <div class="career-item">
-          <div class="role">벤처투자그룹 이사</div>
-          <div class="org">KB인베스트먼트 (현재)</div>
-        </div>
-        <div class="career-item">
-          <div class="role">벤처투자본부 이사</div>
-          <div class="org">전 신한벤처투자</div>
-        </div>
-        <div class="career-item">
-          <div class="role">벤처투자본부 이사</div>
-          <div class="org">전 아주IB투자</div>
-        </div>
-        <div class="career-item">
-          <div class="role">서비스 팀장</div>
-          <div class="org">전 네이버</div>
-        </div>
-        <div class="career-item">
-          <div class="role">개발사 제작 실장</div>
-          <div class="org">전 스마일게이트</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- PORTFOLIO -->
-<div class="portfolio-section" id="portfolio">
-  <div class="portfolio-inner">
-    <div class="section-header">
-      <span class="section-label">Portfolio</span>
-      <h2>주요 투자 포트폴리오</h2>
-      <p>플랫폼·커머스부터 AI·딥테크까지, 시장의 변화를 이끄는 기업들에 투자했습니다</p>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-cat">
-        <h4>🛒 플랫폼 & 커머스</h4>
-        <div class="portfolio-tags">
-          <span class="ptag highlight">무신사</span>
-          <span class="ptag highlight">당근마켓</span>
-          <span class="ptag">에이블리</span>
-          <span class="ptag">리멤버</span>
-          <span class="ptag">그립</span>
-          <span class="ptag">트리플</span>
-        </div>
-      </div>
-      <div class="portfolio-cat">
-        <h4>🎮 게임 & 콘텐츠</h4>
-        <div class="portfolio-tags">
-          <span class="ptag highlight">크래프톤</span>
-          <span class="ptag highlight">펄어비스</span>
-          <span class="ptag">넷마블 에프앤씨</span>
-          <span class="ptag">넷마블 네오</span>
-        </div>
-      </div>
-      <div class="portfolio-cat">
-        <h4>🤖 AI & 딥테크</h4>
-        <div class="portfolio-tags">
-          <span class="ptag">프렌들리에이아이</span>
-          <span class="ptag">스카이랩스</span>
-          <span class="ptag">올거나이즈</span>
-          <span class="ptag">스패너</span>
-          <span class="ptag">로브로스</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- QUOTE -->
-<div class="quote-section">
-  <blockquote>
-    잘 된 투자뿐 아니라 <em>예기치 않은 시장의 반전, 흠집 난 가설,<br />팀의 균열과 기다림 속에서 배운 인내</em>까지,<br />
-    실패에서 얻은 학습과 경험이 저의 판단 구조를 만들어 왔습니다.
-  </blockquote>
-  <cite>— 윤소정</cite>
-</div>
-
-<!-- TREVARI -->
-<section id="trevari">
-  <div class="section-header">
-    <span class="section-label">Trevari Club</span>
-    <h2>트레바리 · 투자자의 나침반</h2>
-    <p>투자자의 시선으로 시장의 구조적 변화를 함께 읽는 독서모임</p>
-  </div>
-
-  <div class="trevari-box">
-    <span class="season-badge">✓ 시즌 1 완료</span>
-    <h3>시즌 1 — 투자자는 어떻게 미래를 예측할까?</h3>
-    <p>
-      어떤 시장이 열릴지, 어떤 팀이 성공할지, 어떤 기술이 미래가 될지 — 투자자는 끊임없이 세상을 분석하고 결정을 내려야 합니다. 이 클럽에서는 '벤처캐피탈리스트가 세상을 바라보는 방식'을 탐구했습니다. 미래를 읽고, 리스크를 해석하고, 본질을 판단하는 사고 구조. 클럽장 소정 님이 심사역으로서 경험한 실전 사례, 실패, 배움, 오랜 시간 쌓아 온 투자 프레임을 나누며 '좋은 판단'에 관해 함께 고민했습니다.
-    </p>
-    <div class="book-list" style="margin-top: 1.25rem;">
-      <span class="book-tag active">돈의 심리학</span>
-      <span class="book-tag active">벤처 마인드셋</span>
-      <span class="book-tag active">실패를 통과하는 일</span>
-      <span class="book-tag active">슈퍼파운더</span>
-    </div>
-    <div class="session-list">
-      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
-        <span class="session-num">1회차</span>
-        <span class="session-title">(투자) 판단의 기초, 심리를 이해합니다 — 📖 모건 하우절, 『돈의 심리학』</span>
-        <span class="session-arrow">↗</span>
-      </a>
-      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
-        <span class="session-num">2회차</span>
-        <span class="session-title">누가 투자 받는가? — 📖 일리야 스트레불라예프, 『벤처 마인드셋』</span>
-        <span class="session-arrow">↗</span>
-      </a>
-      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
-        <span class="session-num">3회차</span>
-        <span class="session-title">누가 성장하는가? — 📖 박소령, 『실패를 통과하는 일』</span>
-        <span class="session-arrow">↗</span>
-      </a>
-      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
-        <span class="session-num">4회차</span>
-        <span class="session-title">누가 성공하는가? — 📖 알리 타마세브, 『슈퍼 파운더』</span>
-        <span class="session-arrow">↗</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="trevari-box" style="border-color: rgba(232,160,60,0.35);">
-    <span class="season-badge" style="background: rgba(29,158,117,0.12); color: var(--accent2); border-color: rgba(29,158,117,0.3);">● 시즌 2 진행중</span>
-    <h3>시즌 2 — 핵심 투자 섹터와 시장의 흐름</h3>
-    <p>
-      최근 투자업계가 주목하는 핵심 투자 섹터와 관심 분야, 시장의 흐름을 바꾸는 주요 이슈를 함께 읽고 토론하는 모임입니다. 매달 한 권의 책을 중심으로 산업과 기술의 변화를 입체적으로 살펴보고, 해당 분야의 전문가를 초대 손님으로 모셔 현장의 시선과 깊이 있는 인사이트를 나눕니다.
-    </p>
-    <p style="margin-top: 0.75rem;">
-      단기적인 유행을 따라가기보다, <strong style="color: var(--text);">시장의 방향을 만드는 구조적 변화를 투자자의 관점</strong>에서 함께 해석해보고자 합니다.
-    </p>
-    <div class="session-list">
-      <a class="session-item session-link" href="https://m.trevari.co.kr/product/4a1e6be8-9af7-4955-a7ad-16133cfceea7?ttag=1765757159011faa13b41223445d2a6589bb8ed50d934&uid=46279f07-5c8f-4e99-aa77-88de4b8b1ecd" target="_blank">
-        <span class="session-num">1회차</span>
-        <span class="session-title">김덕진·이승환, 『피지컬 AI 2026 : 생각하는 AI에서 움직이는 AI로』</span>
-        <span class="session-arrow">↗</span>
-      </a>
-      <a class="session-item session-link" href="https://m.trevari.co.kr/product/84b35bd0-9e69-4f0a-9061-0d57493863d6?ttag=1779279131983da3dd91c358b49cb8359357f2bea2696&uid=cf610e9a-7af6-4f67-a85e-8fb931262c59" target="_blank">
-        <span class="session-num">2회차</span>
-        <span class="session-title">손정우, 『반도체 밸류체인 투자』: 핵심 스타트업부터 산업 전반의 흐름까지</span>
-        <span class="session-arrow">↗</span>
-      </a>
-      <div class="session-item">
-        <span class="session-num">3회차</span>
-        <span class="session-title">박태웅, 『박태웅의 AI 강의 2026』: AI 투자 트렌드와 국가 미래 전략</span>
-        <span class="session-soon">예정</span>
-      </div>
-      <div class="session-item">
-        <span class="session-num">4회차</span>
-        <span class="session-title">박종성, 『혁신은 왜 실패하는가』: 현재에 필요한, 과거가 던지는 교훈</span>
-        <span class="session-soon">예정</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- LECTURES -->
-<section id="lectures">
-  <div class="section-header">
-    <span class="section-label">Lectures</span>
-    <h2>강의록</h2>
-    <p>벤처투자 현장에서 축적한 지식을 정리한 강의 노트</p>
-  </div>
-  <div class="lecture-list">
-    <div class="lecture-item">
-      <span class="lecture-num">01</span>
-      <div class="lecture-info">
-        <h3>예비유니콘의 투자유치 전략</h3>
-        <p>스타트업이 투자를 받기 위해 무엇을 준비해야 하는지, 투자자의 시선에서 바라본 전략과 실전 체크리스트</p>
-      </div>
-      <span class="lecture-badge lec-done">✓ 완료</span>
-    </div>
-    <div class="lecture-item">
-      <span class="lecture-num">02</span>
-      <div class="lecture-info">
-        <h3>세컨더리 투자의 가치</h3>
-        <p>세컨더리 펀드의 구조와 Exit 전략. 1차 투자자와 달리 세컨더리 투자자가 바라보는 가치 평가의 관점</p>
-      </div>
-      <span class="lecture-badge lec-done">✓ 완료</span>
-    </div>
-    <div class="lecture-item">
-      <span class="lecture-num">03</span>
-      <div class="lecture-info">
-        <h3>시장의 신호를 읽는 법</h3>
-        <p>기술·팀·시장의 변화를 미리 포착하는 투자자의 프레임. 작은 단서에서 큰 흐름을 읽는 방법</p>
-      </div>
-      <span class="lecture-badge lec-soon">예정</span>
-    </div>
-    <div class="lecture-item">
-      <span class="lecture-num">04</span>
-      <div class="lecture-info">
-        <h3>커리어 전환의 기술 — VC로 가는 길</h3>
-        <p>IT 서비스 기획자에서 벤처투자자로. 마흔에 새로운 세계로 뛰어든 경험과 판단 기준</p>
-      </div>
-      <span class="lecture-badge lec-soon">예정</span>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header">
-    <span class="section-label">Contact</span>
-    <h2>연락처</h2>
-    <p>투자 문의, 강의 요청, 트레바리 클럽 참여 문의를 기다립니다</p>
-  </div>
-  <div class="contact-grid">
-    <a class="contact-card" href="mailto:yun.sohjeong@gmail.com">
-      <span class="ico">📧</span>
-      <strong>이메일</strong>
-      <span>yun.sohjeong@gmail.com</span>
-    </a>
-    <a class="contact-card" href="https://m.trevari.co.kr/product/84b35bd0-9e69-4f0a-9061-0d57493863d6" target="_blank">
-      <span class="ico">📖</span>
-      <strong>트레바리 클럽</strong>
-      <span>투자자의 나침반 시즌 2</span>
-    </a>
-    <a class="contact-card" href="#">
-      <span class="ico">💬</span>
-      <strong>강의 요청</strong>
-      <span>이메일로 문의해주세요</span>
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 <a href="#">투자자의 나침반</a> · KB인베스트먼트 윤소정 이사</p>
-  <p style="margin-top: 0.5rem;">이 사이트의 내용은 투자 권유가 아닙니다. 투자는 본인의 책임입니다.</p>
-</footer>
-
 </body>
 </html>
