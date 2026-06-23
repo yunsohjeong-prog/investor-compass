@@ -187,26 +187,37 @@
     /* PORTFOLIO */
     .portfolio-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .portfolio-inner { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
-    .portfolio-cat {
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.5rem;
-    }
-    .portfolio-cat h4 {
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
+    .portfolio-cat-title {
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--accent);
-      margin-bottom: 1rem; padding-bottom: 0.75rem;
+      margin: 2.5rem 0 1rem; padding-bottom: 0.6rem;
       border-bottom: 1px solid var(--border);
     }
-    .portfolio-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .ptag {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 999px; padding: 0.3rem 0.85rem;
-      font-size: 0.82rem; color: var(--text-muted);
-      transition: all 0.2s;
+    .portfolio-cat-title:first-of-type { margin-top: 0; }
+    .pcard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .pcard {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column; gap: 0.6rem;
     }
-    .ptag:hover { border-color: var(--accent); color: var(--accent); }
-    .ptag.highlight { color: var(--accent2); border-color: rgba(29,158,117,0.4); background: rgba(29,158,117,0.06); }
+    .pcard:hover { border-color: rgba(232,160,60,0.5); transform: translateY(-2px); }
+    .pcard-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .pcard-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .pcard-stage {
+      font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.6rem;
+      border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+      background: rgba(232,160,60,0.08); color: var(--accent);
+      border: 1px solid rgba(232,160,60,0.25);
+    }
+    .pcard-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .pcard-quote {
+      font-size: 0.82rem; color: var(--text-muted);
+      font-style: italic; border-top: 1px solid var(--border);
+      padding-top: 0.6rem; line-height: 1.6;
+    }
+    .pcard-quote::before { content: '"'; color: var(--accent); font-style: normal; margin-right: 0.1rem; }
+    .pcard-quote::after  { content: '"'; color: var(--accent); font-style: normal; margin-left: 0.1rem; }
 
     /* TREVARI */
     .trevari-box {
@@ -550,36 +561,91 @@
       <h2>주요 투자 포트폴리오</h2>
       <p>플랫폼·커머스부터 AI·딥테크까지, 시장의 변화를 이끄는 기업들에 투자했습니다</p>
     </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-cat">
-        <h4>🛒 플랫폼 & 커머스</h4>
-        <div class="portfolio-tags">
-          <span class="ptag highlight">무신사</span>
-          <span class="ptag highlight">당근마켓</span>
-          <span class="ptag">에이블리</span>
-          <span class="ptag">리멤버</span>
-          <span class="ptag">그립</span>
-          <span class="ptag">트리플</span>
-        </div>
+
+    <p class="portfolio-cat-title">🛒 플랫폼 & 커머스</p>
+    <div class="pcard-grid">
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">무신사</span><span class="pcard-stage">Series B</span></div>
+        <p class="pcard-desc">국내 1위 패션 플랫폼, MZ세대의 패션 인프라</p>
+        <p class="pcard-quote">브랜드와 고객을 동시에 키운 플랫폼의 교과서</p>
       </div>
-      <div class="portfolio-cat">
-        <h4>🎮 게임 & 콘텐츠</h4>
-        <div class="portfolio-tags">
-          <span class="ptag highlight">크래프톤</span>
-          <span class="ptag highlight">펄어비스</span>
-          <span class="ptag">넷마블 에프앤씨</span>
-          <span class="ptag">넷마블 네오</span>
-        </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">당근마켓</span><span class="pcard-stage">Series C</span></div>
+        <p class="pcard-desc">동네 기반 중고거래·로컬 커뮤니티 플랫폼</p>
+        <p class="pcard-quote">지역이라는 오프라인을 디지털로 연결한 네트워크 효과</p>
       </div>
-      <div class="portfolio-cat">
-        <h4>🤖 AI & 딥테크</h4>
-        <div class="portfolio-tags">
-          <span class="ptag">프렌들리에이아이</span>
-          <span class="ptag">스카이랩스</span>
-          <span class="ptag">올거나이즈</span>
-          <span class="ptag">스패너</span>
-          <span class="ptag">로브로스</span>
-        </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">에이블리</span><span class="pcard-stage">Series B</span></div>
+        <p class="pcard-desc">AI 기반 패션 쇼핑 앱, 여성 패션 버티컬 1위</p>
+        <p class="pcard-quote">추천 알고리즘이 만든 취향의 플랫폼</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">리멤버</span><span class="pcard-stage">Series C</span></div>
+        <p class="pcard-desc">명함 관리에서 커리어 플랫폼으로 진화</p>
+        <p class="pcard-quote">B2B 데이터의 가치를 가장 먼저 읽은 팀</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">그립</span><span class="pcard-stage">Series A</span></div>
+        <p class="pcard-desc">국내 최초 라이브 커머스 플랫폼</p>
+        <p class="pcard-quote">쇼핑의 엔터테인먼트화, 가장 앞서 달렸다</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">트리플</span><span class="pcard-stage">Series B</span></div>
+        <p class="pcard-desc">여행 계획·예약 슈퍼앱</p>
+        <p class="pcard-quote">여행자의 모든 여정을 하나로 담은 버티컬</p>
+      </div>
+    </div>
+
+    <p class="portfolio-cat-title">🎮 게임 & 콘텐츠</p>
+    <div class="pcard-grid">
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">크래프톤</span><span class="pcard-stage">Pre-IPO</span></div>
+        <p class="pcard-desc">배틀그라운드로 글로벌 게임 시장 제패</p>
+        <p class="pcard-quote">한국 게임이 세계 표준이 될 수 있다는 걸 증명한 팀</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">펄어비스</span><span class="pcard-stage">Pre-IPO</span></div>
+        <p class="pcard-desc">검은사막으로 글로벌 MMORPG 시장 진출</p>
+        <p class="pcard-quote">자체 엔진으로 세계와 싸운 기술 기반 게임사</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">넷마블 에프앤씨</span><span class="pcard-stage">Growth</span></div>
+        <p class="pcard-desc">모바일 RPG 전문 개발사</p>
+        <p class="pcard-quote">검증된 IP를 모바일로 확장하는 실행력</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">넷마블 네오</span><span class="pcard-stage">Growth</span></div>
+        <p class="pcard-desc">세계관 기반 캐주얼·미드코어 게임 개발사</p>
+        <p class="pcard-quote">다양한 장르 실험으로 차세대 IP를 발굴하는 팀</p>
+      </div>
+    </div>
+
+    <p class="portfolio-cat-title">🤖 AI & 딥테크</p>
+    <div class="pcard-grid">
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">프렌들리에이아이</span><span class="pcard-stage">Series A</span></div>
+        <p class="pcard-desc">생성AI 기반 대화형 고객 응대 솔루션</p>
+        <p class="pcard-quote">AI가 실제 비즈니스 문제를 푸는 현장에 있는 팀</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">스카이랩스</span><span class="pcard-stage">Series B</span></div>
+        <p class="pcard-desc">반지형 웨어러블로 심방세동 조기 진단</p>
+        <p class="pcard-quote">의료 데이터와 하드웨어를 함께 잡은 딥테크</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">올거나이즈</span><span class="pcard-stage">Series B</span></div>
+        <p class="pcard-desc">기업용 AI 지식관리·검색 자동화 플랫폼</p>
+        <p class="pcard-quote">엔터프라이즈 AI 전환의 가장 실용적인 접근</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">스패너</span><span class="pcard-stage">Series A</span></div>
+        <p class="pcard-desc">AI 기반 소프트웨어 테스트 자동화</p>
+        <p class="pcard-quote">개발 생산성 혁신, 조용하지만 강한 인프라 팀</p>
+      </div>
+      <div class="pcard">
+        <div class="pcard-top"><span class="pcard-name">로브로스</span><span class="pcard-stage">Series A</span></div>
+        <p class="pcard-desc">물류 로봇 자동화 솔루션</p>
+        <p class="pcard-quote">피지컬 AI 시대를 앞서 준비한 로보틱스 팀</p>
       </div>
     </div>
   </div>
