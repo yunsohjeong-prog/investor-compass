@@ -220,6 +220,56 @@
     .pcard-quote::before { content: '"'; color: var(--accent); font-style: normal; margin-right: 0.1rem; }
     .pcard-quote::after  { content: '"'; color: var(--accent); font-style: normal; margin-left: 0.1rem; }
 
+    /* NEWS BOARD */
+    .news-board { width: 100%; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .news-header-row {
+      display: grid; grid-template-columns: 48px 1fr 90px 80px;
+      padding: 0.7rem 1.25rem;
+      background: var(--bg3);
+      font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 500;
+    }
+    .news-row {
+      display: grid; grid-template-columns: 48px 1fr 90px 80px;
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--border);
+      color: inherit; text-decoration: none;
+      transition: background 0.15s;
+      align-items: center;
+    }
+    .news-row:hover { background: var(--bg2); }
+    .news-col-num { font-size: 0.85rem; color: var(--text-muted); }
+    .news-col-title { font-size: 0.92rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .news-col-title a { color: inherit; text-decoration: none; }
+    .news-row:hover .news-col-title a { color: var(--accent2); }
+    .news-col-tag { }
+    .news-col-date { font-size: 0.8rem; color: var(--text-muted); }
+    .news-tag {
+      font-size: 0.7rem; padding: 0.18rem 0.6rem;
+      border-radius: 999px; white-space: nowrap;
+      background: rgba(183,121,31,0.08); color: var(--accent);
+      border: 1px solid rgba(183,121,31,0.25);
+    }
+    .news-tag.green { background: rgba(45,106,79,0.08); color: var(--accent2); border-color: rgba(45,106,79,0.3); }
+    .news-tag.purple { background: rgba(127,119,221,0.08); color: var(--accent3); border-color: rgba(127,119,221,0.3); }
+    .news-page-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1rem; padding: 0.6rem 0;
+    }
+    .news-page-btns { display: flex; gap: 0.4rem; }
+    .news-page-btn {
+      min-width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--border); background: none;
+      color: var(--text-muted); font-size: 0.85rem; cursor: pointer;
+      transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+    }
+    .news-page-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+    .news-page-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent2); font-weight: 700; }
+    @media (max-width: 600px) {
+      .news-header-row, .news-row { grid-template-columns: 36px 1fr 72px; }
+      .news-col-date { display: none; }
+    }
+
     /* TREVARI */
     .trevari-box {
       background: var(--bg2); border: 1px solid var(--border);
@@ -541,6 +591,7 @@
   <div class="nav-links" id="nav-links">
     <a href="#about" class="nav-link-item">소개</a>
     <a href="#portfolio" class="nav-link-item">포트폴리오</a>
+    <a href="#news" class="nav-link-item">언론보도</a>
     <a href="#trevari" class="nav-link-item">트레바리</a>
     <a href="#lectures" class="nav-link-item">강의록</a>
     <a href="#siya" class="nav-link-item">시야</a>
@@ -748,6 +799,30 @@
   </blockquote>
   <cite>— 윤소정</cite>
 </div>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="section-header">
+    <span class="section-label">Press · Media</span>
+    <h2>언론 보도</h2>
+    <p>윤소정이 언급된 뉴스 · 기고 · 정책 자료</p>
+  </div>
+  <div class="news-board">
+    <div class="news-header-row">
+      <span class="news-col-num">No.</span>
+      <span class="news-col-title">제목 · 매체</span>
+      <span class="news-col-tag">구분</span>
+      <span class="news-col-date">날짜</span>
+    </div>
+    <div id="news-rows"></div>
+  </div>
+  <div class="news-page-nav">
+    <span style="font-size:0.8rem; color:var(--text-muted);" id="news-page-info"></span>
+    <div class="news-page-btns" id="news-page-btns"></div>
+  </div>
+</section>
+
+<hr class="divider" />
 
 <!-- TREVARI -->
 <section id="trevari">
@@ -1459,6 +1534,65 @@ function closeSiyaDetail() {
 }
 
 document.addEventListener('DOMContentLoaded', () => renderBoard(0));
+</script>
+
+<script>
+const newsData = [
+  { num:13, title:'KB인베가 낙점한 \'로브로스\', NextRise 2026 혁신기업상 수상', media:'뉴스탑코리아', date:'2026.06.23', tag:'투자뉴스', tagCls:'green', url:'https://www.newstopkorea.com/news/articleView.html?idxno=45728' },
+  { num:12, title:'세컨더리 투자, 지금이 기회인 이유', media:'스타트업레시피', date:'2026.05.01', tag:'강연·기고', tagCls:'purple', url:'https://startuprecipe.co.kr/archives/5815255' },
+  { num:11, title:'콘텐츠산업 기업 육성정책, IP·데이터·투자 연계 중심 전환 논의', media:'머니투데이', date:'2026.04.17', tag:'정책', tagCls:'', url:'https://www.mt.co.kr/industry/2026/04/17/2026041715161483228' },
+  { num:10, title:'"콘텐츠산업 구조적 특수성 반영한 맞춤형 기업육성체계 필요"', media:'핀포인트뉴스', date:'2026.04.15', tag:'정책', tagCls:'', url:'https://www.pinpointnews.co.kr/news/articleView.html?idxno=445725' },
+  { num:9,  title:'KB인베스트, 90억 \'세컨더리플러스 2호\' 결성', media:'딜사이트', date:'2024.06.07', tag:'투자뉴스', tagCls:'green', url:'https://dealsite.co.kr/articles/123553' },
+  { num:8,  title:'우리는 모두 연결되어 있었다', media:'플래텀', date:'2025', tag:'강연·기고', tagCls:'purple', url:'https://platum.kr/archives/261267' },
+  { num:7,  title:'AI 솔루션 스타트업 \'코르카\', 70억 원 투자 유치', media:'벤처스퀘어', date:'2023.03.14', tag:'투자뉴스', tagCls:'green', url:'https://www.venturesquare.net/875415' },
+  { num:6,  title:'콘진원 \'메타버스 콘텐츠 포럼\' 출범', media:'아시아경제', date:'2022.05.12', tag:'정책', tagCls:'', url:'https://www.asiae.co.kr/article/2022051213581763229' },
+  { num:5,  title:'VR게임 개발사 \'스토익엔터테인먼트\', 30억원 투자 유치', media:'전자신문', date:'2021.12.31', tag:'투자뉴스', tagCls:'green', url:'https://www.etnews.com/20211231000045' },
+  { num:4,  title:'초거대 AI 개발 플랫폼 \'프렌들리에이아이\', 80억원 시리즈A 투자 유치', media:'파이낸셜뉴스', date:'2021.12.15', tag:'투자뉴스', tagCls:'green', url:'https://www.fnnews.com/news/202112151015349162' },
+  { num:3,  title:'버추얼플로우, 중기부 팁스 선정…KB인베스트먼트 추천', media:'더벨', date:'2021.10.25', tag:'투자뉴스', tagCls:'green', url:'https://www.thebell.co.kr/free/content/ArticleView.asp?key=202110251425440920105282' },
+  { num:2,  title:'한국기업가정신재단 스타트업 멘토링', media:'한국기업가정신재단', date:'2019.08', tag:'강연·기고', tagCls:'purple', url:'https://www.kef.kr/startup/all/2019080616445319936' },
+  { num:1,  title:'식권대장 벤디스, 65억 시리즈B 투자유치', media:'더벨', date:'2018.07.17', tag:'투자뉴스', tagCls:'green', url:'https://www.thebell.co.kr/front/newsview.asp?click=F&key=201807170100030320001936' },
+];
+
+const NEWS_PER_PAGE = 5;
+const newsPages = [];
+for (let i = 0; i < newsData.length; i += NEWS_PER_PAGE) {
+  newsPages.push(newsData.slice(i, i + NEWS_PER_PAGE));
+}
+
+let newsCurrentPage = 0;
+
+function renderNews(page) {
+  newsCurrentPage = page;
+  const rows = document.getElementById('news-rows');
+  const btns = document.getElementById('news-page-btns');
+  const info = document.getElementById('news-page-info');
+  if (!rows) return;
+  rows.innerHTML = '';
+  newsPages[page].forEach(item => {
+    const a = document.createElement('a');
+    a.className = 'news-row';
+    a.href = item.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.innerHTML =
+      '<span class="news-col-num">' + item.num + '</span>' +
+      '<span class="news-col-title"><a href="' + item.url + '" target="_blank" rel="noopener">' + item.title + '</a><span style="font-size:0.75rem;color:var(--text-muted);margin-left:0.25rem;">' + item.media + '</span></span>' +
+      '<span class="news-col-tag"><span class="news-tag' + (item.tagCls ? ' '+item.tagCls : '') + '">' + item.tag + '</span></span>' +
+      '<span class="news-col-date">' + item.date + '</span>';
+    rows.appendChild(a);
+  });
+  btns.innerHTML = '';
+  newsPages.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.className = 'news-page-btn' + (i === page ? ' active' : '');
+    b.textContent = i + 1;
+    b.onclick = () => renderNews(i);
+    btns.appendChild(b);
+  });
+  info.textContent = (page+1) + ' / ' + newsPages.length + ' 페이지';
+}
+
+document.addEventListener('DOMContentLoaded', () => renderNews(0));
 </script>
 </body>
 </html>
