@@ -452,12 +452,81 @@
     }
     footer a { color: var(--accent); text-decoration: none; }
 
+    /* HAMBURGER BUTTON */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 36px; height: 36px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE NAV DRAWER */
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 60px; left: 0; right: 0;
+        background: rgba(248,249,250,0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column; gap: 0;
+        padding: 0.5rem 0; z-index: 99;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 0.9rem 1.5rem; font-size: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      nav { position: relative; }
+
+      /* HERO */
+      .hero { padding: 4rem 1.25rem 3rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .badge-row { gap: 0.4rem; }
+      .badge { font-size: 0.75rem; padding: 0.25rem 0.75rem; }
+
+      /* ABOUT */
+      .about-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+
+      /* PORTFOLIO */
+      .pcard-grid { grid-template-columns: 1fr; }
+
+      /* SECTIONS */
+      section { padding: 3rem 1.25rem; }
+      .portfolio-inner { padding: 3rem 1.25rem; }
+      .card-grid { grid-template-columns: 1fr; }
+
+      /* LECTURE */
+      .lecture-item { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+
+      /* CONTACT */
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+
+      /* SIYA */
+      .siya-header-row, .siya-row { grid-template-columns: 36px 1fr 70px; }
+      .siya-col-date { display: none; }
+    }
+
     @media (max-width: 480px) {
       nav { padding: 0 1rem; }
-      .nav-links { gap: 1rem; }
-      .hero { padding: 4rem 1rem 3rem; }
-      section { padding: 3rem 1rem; }
-      .lecture-item { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .hero { padding: 3.5rem 1rem 2.5rem; }
+      .hero h1 { font-size: 1.55rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .pcard-grid { grid-template-columns: 1fr; }
+      .siya-col-tag { display: none; }
+      .siya-header-row, .siya-row { grid-template-columns: 36px 1fr; }
     }
   </style>
 </head>
@@ -466,15 +535,34 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo" style="text-decoration:none;">🧭 <em class="nav-name">윤소정</em>의 투자자의 <span>나침반</span></a>
-  <div class="nav-links">
-    <a href="#about">소개</a>
-    <a href="#portfolio">포트폴리오</a>
-    <a href="#trevari">트레바리</a>
-    <a href="#lectures">강의록</a>
-    <a href="#siya">시야</a>
-    <a href="#contact">연락처</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="#about" class="nav-link-item">소개</a>
+    <a href="#portfolio" class="nav-link-item">포트폴리오</a>
+    <a href="#trevari" class="nav-link-item">트레바리</a>
+    <a href="#lectures" class="nav-link-item">강의록</a>
+    <a href="#siya" class="nav-link-item">시야</a>
+    <a href="#contact" class="nav-link-item">연락처</a>
   </div>
 </nav>
+<script>
+  (function() {
+    var btn = document.getElementById('nav-hamburger');
+    var links = document.getElementById('nav-links');
+    btn.addEventListener('click', function() {
+      btn.classList.toggle('open');
+      links.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-link-item').forEach(function(a) {
+      a.addEventListener('click', function() {
+        btn.classList.remove('open');
+        links.classList.remove('open');
+      });
+    });
+  })();
+</script>
 
 <!-- HERO -->
 <header class="hero">
